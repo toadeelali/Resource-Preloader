@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Preloader</title>
+  <meta name="description" content="Preloader">
+  <meta name="author" content="">
+</head>
+
+<body>
+  <h1 id="log">0/0</h1>
+
+  <script src="loader.js"></script>
+  <script>
+    var testManifest = [
+      {
+        id: "dependencyTest",
+        src: "assets/script.js",
+        dependency: 'testJS'
+      },
+      {
+        id: "testJs",
+        src: "assets/howler.min.js"
+      },
+      {
+        id: "testStyle",
+        src: "assets/style.css"
+      },
+      {
+        id: "testImage",
+        src: "assets/test.jpg"
+      },
+      {
+        id: "testSound",
+        src: "assets/test.mp3"
+      },
+      {
+        id: "testFont",
+        src: "assets/urdu.woff2"
+      }
+
+    ];
+
+    var preloader = new Preloader(testManifest, function (e, loaded, total, f) {
+      if (e === "complete")
+        console.log(e, loaded, total, f);
+      else {
+        document.getElementById("log").innerHTML = loaded + "/" + total;
+      }
+    });
+
+    preloader.Load();
+  </script>
+</body>
+
+</html>
