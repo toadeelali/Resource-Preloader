@@ -15,13 +15,13 @@
   <script>
     var testManifest = [
       {
-        id: "dependencyTest",
-        src: "assets/script.js",
-        dependency: 'testJS'
+        id: "howler",
+        src: "assets/howler.min.js"
       },
       {
-        id: "testJs",
-        src: "assets/howler.min.js"
+        id: "dependencyTest",
+        src: "assets/script.js",
+        dependency: ["howler"]
       },
       {
         id: "testStyle",
@@ -46,7 +46,7 @@
       if (e === "complete")
         console.log(e, loaded, total, f);
       else {
-        document.getElementById("log").innerHTML = loaded + "/" + total;
+        document.getElementById("log").innerHTML = "Downloading progress: " + loaded + "/" + total;
       }
     });
 
